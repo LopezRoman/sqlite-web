@@ -75,7 +75,6 @@ Basic INSERT, UPDATE and DELETE queries are supported:
 The syntax for invoking sqlite-web is:
 
 ```console
-
 $ sqlite_web [options] /path/to/database-file.db
 ```
 
@@ -105,9 +104,7 @@ The following options are available:
 ### Using docker
 
 A Dockerfile is provided with sqlite-web. To use:
-
 ```console
-
 $ cd docker/  # Change dirs to the dir containing Dockerfile
 $ docker build -t coleifer/sqlite-web .
 $ docker run -it --rm \
@@ -115,4 +112,9 @@ $ docker run -it --rm \
     -v /path/to/your-data:/data \
     -e SQLITE_DATABASE=db_filename.db \
     coleifer/sqlite-web
+```
+
+We can also run the container detached and give it a name.
+```console
+docker run -d --name sqlite-web_open-webui_data --rm -p 8080:8080 -v /var/lib/docker/volumes/open-webui_open-webui/_data:/data -e SQLITE_DATABASE=webui.db coleifer/sqlite-web
 ```
